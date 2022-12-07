@@ -4,8 +4,6 @@
 #include <ctime>;
 
 #include "boost/lexical_cast.hpp";
-#include "mpir.h";
-#include "mpirxx.h";
 
 
 struct randomSequence

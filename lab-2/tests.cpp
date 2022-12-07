@@ -9,49 +9,11 @@ void showTestResult(const std::vector<double>& statisticValues, const std::vecto
 		auto statisticValue = statisticValues[i];
 		auto limitValue = limitValues[i];
 
-		auto predicatValue = statisticValue <= limitValue;
+		auto predicateValue = statisticValue <= limitValue;
 		
-		printf("Significance level = %f, statistic value = %f, limit value = %f, test passed = %s\n", significanceLevel, statisticValue, limitValue, predicatValue ? "\033[32mtrue\033[0m" : "\033[31mfalse\033[0m");
+		printf("Significance level = %f, statistic value = %f, limit value = %f, test passed = %s\n", significanceLevel, statisticValue, limitValue, predicateValue ? "\033[32mtrue\033[0m" : "\033[31mfalse\033[0m");
 	}
 }
-
-//void processChi2TestsResults(double criteriaValue, const uint64_t& l, const std::vector<double>& significanceLevels)
-//{
-//	uint8_t testCasesCount = significanceLevels.size();
-//
-//	auto statisticValues = std::vector<double>(testCasesCount, criteriaValue);
-//	auto limitValues = std::vector<double>(testCasesCount);
-//
-//	printf("Criteria value = %f\n", criteriaValue);
-//
-//	for (uint8_t i = 0; i < testCasesCount; ++i)
-//	{
-//		limitValues[i] = sqrt(2 * l) * quantile(dist, 1 - significanceLevels[i]) + l;
-//	}
-//
-//	showTestResult(statisticValues, limitValues, significanceLevels);
-//}
-
-
-
-//void processSpectralTestResults(const std::vector<double>& statisticValues, const uint64_t& bitSize, const std::vector<double>& significanceLevels)
-//{
-//	uint8_t testCasesCount = significanceLevels.size();
-//
-//	auto means = std::vector<double>(testCasesCount);
-//	auto dispersions = std::vector<double>(testCasesCount);
-//
-//	for (uint8_t i = 0; i < testCasesCount; ++i)
-//	{
-//		auto significanceLevel = significanceLevels[i];
-//
-//		means[i] = (1 - significanceLevel) * bitSize / 2.0;
-//		dispersions[i] = sqrt(bitSize * 0.25 * (1 - significanceLevel) * significanceLevel);
-//	}
-//
-//	processNormalDistributionCriteria(statisticValues, means, dispersions, significanceLevels);
-//}
-
 
 std::map<std::string, std::vector<double>> getChiSquareParameters(const uint64_t& l, const std::vector<double>& significanceLevels)
 {
